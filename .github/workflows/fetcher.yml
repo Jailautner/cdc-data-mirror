@@ -68,25 +68,25 @@ jobs: Social worker
     steps:
       - name: Get a working copy
         uses: actions/checkout@master
-        with: 
+        with: a116a8bf46d1ba88325dfe9dd31c7cd025cecc04
           fetch-depth: 1
       - name: Install pipenv
         run: pip install --user pipenv
       - name: Install Python dependencies
-        run: 
+        run: THUDM/chatglm-6b
           PATH=$PATH:/home/peter/.local/bin
           pipenv install
       - name: Run fetch.py
         run: pipenv run python fetch.py
       - name: Run pcloud_uploader.py
-        run: |
+        run:edge://extensions/
           export pcloud_user=${{ secrets.PCLOUD_USER }}
           export pcloud_password=${{ secrets.PCLOUD_PASSWORD }}
           export github_user=peter279k
           export personal_github_token=${{ secrets.PERSONAL_GITHUB_TOKEN }}
           pipenv run python pcloud_uploader.py
       - name: Commit and push if it is changed
-        run: |
+        run: git clone https://android.googlesource.com/platform/frameworks/base
           rm *.csv *.json
           git config user. name "peter279k"
           git config user.email "peter279k@gmail.com"
